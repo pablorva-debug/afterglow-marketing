@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Afterglow — The show isn't over yet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black:    #07060d;
+      --deep:     #0f0d1a;
+      --amber:    #f5a623;
+      --violet:   #7b4fff;
+      --rose:     #ff6b9d;
+      --white:    #f0eef8;
+      --muted:    #8a86a0;
+      --border:   rgba(245,166,35,0.18);
+      --glow-amber: 0 0 60px rgba(245,166,35,0.25);
+      --glow-violet: 0 0 60px rgba(123,79,255,0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.35;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: linear-gradient(to bottom, rgba(7,6,13,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--amber);
+      padding: 0.55rem 1.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: #ffc04a; transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 1.5rem 5rem;
+      overflow: hidden;
+    }
+
+    /* Radial glow blobs */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(123,79,255,0.22) 0%, transparent 70%);
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.18) 0%, transparent 70%);
+      bottom: 0; right: -100px;
+      pointer-events: none;
+    }
+
+    /* Wristband stripe */
+    .wristband {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--violet), var(--rose), var(--amber), var(--rose), var(--violet));
+      background-size: 200% 100%;
+      animation: slide 4s linear infinite;
+    }
+    @keyframes slide {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 14vw, 11rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title span {
+      color: var(--amber);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-sub em {
+      color: var(--white);
+      font-style: normal;
+    }
+
+    /* Waitlist form */
+    .waitlist {
+      display: flex;
+      gap: 0;
+      max-width: 420px;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: var(--glow-amber);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .waitlist input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: none;
+      outline: none;
+      padding: 1rem 1.2rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+    .waitlist input::placeholder { color: var(--muted); }
+
+    .waitlist button {
+      background: var(--amber);
+      color: var(--black);
+      border: none;
+      padding: 1rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .waitlist button:hover { background: #ffc04a; }
+
+    .hero-fine {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.5s forwards;
+      margin-top: 2rem;
+    }
+    .scroll-cue span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+      animation: pulse-line 2s ease-in-out infinite;
+    }
+    @keyframes pulse-line {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── SECTION BASE ─── */
+    section {
+      padding: 7rem 1.5rem;
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 4rem;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how {
+      background: var(--deep);
+      border-top: 1px solid rgba(123,79,255,0.15);
+      border-bottom: 1px solid rgba(123,79,255,0.15);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0;
+    }
+
+    .step {
+      padding: 2.5rem 2rem;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .step:first-child { border-left: none; }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(245,166,35,0.08);
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      letter-spacing: 0;
+    }
+
+    .step-icon {
+      width: 44px; height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      background: rgba(245,166,35,0.06);
+    }
+
+    .step h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .step p em {
+      color: var(--amber);
+      font-style: normal;
+    }
+
+    /* connector line on desktop */
+    @media (min-width: 800px) {
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+        position: relative;
+      }
+      .steps::before {
+        content: '';
+        position: absolute;
+        top: 3.8rem;
+        left: calc(33.33% - 1px);
+        right: calc(33.33% - 1px);
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--amber), transparent);
+        opacity: 0.3;
+        pointer-events: none;
+      }
+    }
+
+    /* ─── FEATURES ─── */
+    .features {
+      background: var(--black);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .feature-card:hover { background: var(--deep); }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .feature-card:nth-child(1)::before { background: var(--amber); }
+    .feature-card:nth-child(2)::before { background: var(--violet); }
+    .feature-card:nth-child(3)::before { background: var(--rose); }
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+    }
+    .feature-card:nth-child(1) .feature-tag { color: var(--amber); background: rgba(245,166,35,0.1); }
+    .feature-card:nth-child(2) .feature-tag { color: var(--violet); background: rgba(123,79,255,0.1); }
+    .feature-card:nth-child(3) .feature-tag { color: var(--rose); background: rgba(255,107,157,0.1); }
+
+    .feature-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+      line-height: 1.05;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ─── BOTTOM MANIFESTO ─── */
+    .manifesto {
+      background: var(--deep);
+      border-top: 1px solid rgba(245,166,35,0.12);
+      text-align: center;
+      padding: 7rem 1.5rem;
+    }
+
+    .manifesto-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .manifesto blockquote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+    .manifesto blockquote span { color: var(--amber); }
+
+    .manifesto p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* Final CTA waitlist */
+    .waitlist-2 {
+      display: flex;
+      gap: 0;
+      max-width: 420px;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: var(--glow-violet);
+    }
+    .waitlist-2 input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: none;
+      outline: none;
+      padding: 1rem 1.2rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+    }
+    .waitlist-2 input::placeholder { color: var(--muted); }
+    .waitlist-2 button {
+      background: var(--violet);
+      color: var(--white);
+      border: none;
+      padding: 1rem 1.5rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .waitlist-2 button:hover { background: #9068ff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 600px) {
+      nav { padding: 1.2rem 1.5rem; }
+
+      .waitlist, .waitlist-2 {
+        flex-direction: column;
+      }
+      .waitlist input, .waitlist-2 input {
+        border-bottom: 1px solid var(--border);
+      }
+      .waitlist button, .waitlist-2 button {
+        padding: 0.9rem;
+        text-align: center;
+      }
+
+      .step {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+      .step:first-child { border-top: none; }
+    }
+    /* ─── CONCERT PASSPORT SECTION ─── */
+    .passport-section {
+      background: var(--deep);
+      border-top: 1px solid rgba(123,79,255,0.15);
+      border-bottom: 1px solid rgba(123,79,255,0.15);
+      padding: 7rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .passport-glow-left {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(123,79,255,0.15) 0%, transparent 70%);
+      top: -100px; left: -150px;
+      pointer-events: none;
+    }
+    .passport-glow-right {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 70%);
+      bottom: -80px; right: -100px;
+      pointer-events: none;
+    }
+
+    .passport-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .passport-live-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      background: rgba(255,107,157,0.1);
+      border: 1px solid rgba(255,107,157,0.25);
+      border-radius: 20px;
+      padding: 0.25rem 0.7rem;
+    }
+
+    .live-dot {
+      width: 6px; height: 6px;
+      background: var(--rose);
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .passport-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.8rem;
+    }
+    .passport-headline-accent { color: var(--amber); }
+
+    .passport-intro {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 640px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Stats row */
+    .passport-stats-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pstat {
+      flex: 1;
+      min-width: 140px;
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      background: rgba(255,255,255,0.02);
+      transition: background 0.2s;
+    }
+    .pstat:hover { background: rgba(255,255,255,0.04); }
+
+    .pstat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--amber);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .pstat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .pstat-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+
+    /* Two cards */
+    .passport-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pcard {
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pcard:hover { transform: translateY(-3px); }
+    .pcard-private:hover { border-color: rgba(123,79,255,0.35); }
+    .pcard-share:hover { border-color: rgba(245,166,35,0.35); }
+
+    .pcard-top { display: flex; }
+
+    .pcard-chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      background: rgba(123,79,255,0.1);
+      border: 1px solid rgba(123,79,255,0.2);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+    }
+    .pcard-chip-amber {
+      color: var(--amber);
+      background: rgba(245,166,35,0.1);
+      border-color: rgba(245,166,35,0.2);
+    }
+
+    .pcard-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .pcard-body {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Private card shows */
+    .pcard-shows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .pcard-show {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .pcs-bar {
+      height: 3px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .pcs-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pcs-blur { opacity: 0.25; filter: blur(2px); }
+
+    /* Share card */
+    .passport-share-preview {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      background: rgba(245,166,35,0.05);
+      border: 1px solid rgba(245,166,35,0.12);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+    }
+
+    .share-avatar {
+      width: 38px; height: 38px;
+      background: rgba(245,166,35,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .share-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      flex: 1;
+    }
+
+    .share-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .share-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .share-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .share-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .stag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 3px;
+      padding: 0.25rem 0.6rem;
+    }
+    .stag-more {
+      color: var(--amber);
+      border-color: rgba(245,166,35,0.2);
+      background: rgba(245,166,35,0.06);
+    }
+
+    .pcard-footer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: auto;
+    }
+    .pcard-footer-amber { color: rgba(245,166,35,0.6); }
+
+    .passport-footnote {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .passport-footnote span {
+      color: var(--amber);
+    }
+
+    @media (max-width: 800px) {
+      .passport-cards-row {
+        grid-template-columns: 1fr;
+      }
+      .pstat-divider { display: none; }
+      .pstat { min-width: 45%; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Afterglow</a>
+    <a class="nav-cta" href="#waitlist-bottom">Join Waitlist</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wristband"></div>
+
+    <p class="hero-eyebrow">Same night &nbsp;·&nbsp; Same venue &nbsp;·&nbsp; Same feeling</p>
+
+    <h1 class="hero-title">
+      The show<br/>
+      <span>isn't over yet.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Afterglow connects everyone who was in the room.
+      <em>Share the moments only you could capture.</em>
+      Relive the night with the crowd who lived it.
+    </p>
+
+    <div class="waitlist">
+      <input type="email" placeholder="your@email.com" aria-label="Email address" />
+      <button type="button">Get Early Access</button>
+    </div>
+
+    <p class="hero-fine">No spam. Just the glow when we launch.</p>
+
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="section-inner">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title">Three steps.<br/>One night.</h2>
+
+      <div class="steps">
+
+        <div class="step">
+          <span class="step-num">01</span>
+          <div class="step-icon">📍</div>
+          <h3>Check in at the venue</h3>
+          <p>GPS confirms you're <em>actually there.</em> Your room opens at doors. No ticket upload, no screenshots — just show up and check in.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-num">02</span>
+          <div class="step-icon">📸</div>
+          <h3>Upload your moments</h3>
+          <p>Photos, videos, the shaky crowd cam. <em>Raw is the aesthetic.</em> No filters required. Every angle from every person who was there.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-num">03</span>
+          <div class="step-icon">🔥</div>
+          <h3>Relive it with the room</h3>
+          <p>See the night through <em>800 pairs of eyes.</em> React, feel it again, find the people who were standing next to you.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-inner">
+      <span class="section-label">Built different</span>
+      <h2 class="section-title">No algorithm.<br/>No gatekeepers.<br/>No forgetting.</h2>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <span class="feature-tag">Access</span>
+          <h3>GPS-Verified Entry</h3>
+          <p>Every room is closed to people who weren't there. Your location at show time is your ticket in. The crowd stays clean — no fans who watched the livestream, no bots, no noise.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-tag">Feed</span>
+          <h3>Chronological. Always.</h3>
+          <p>Content appears in the order it was uploaded, not ranked by what's most engaging. No algorithm deciding what the night meant. The show plays out exactly as it happened.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-tag">Archive</span>
+          <h3>Yours Forever</h3>
+          <p>Every show room lives permanently. Relive a gig from fifteen years ago, find the crowd from a night you'll never forget. Anyone can watch — only the people who were there can add to it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCERT PASSPORT -->
+  <section class="passport-section">
+    <div class="passport-glow-left"></div>
+    <div class="passport-glow-right"></div>
+
+    <div class="section-inner">
+      <div class="passport-eyebrow">
+        <span class="section-label" style="margin-bottom:0">Signature Feature</span>
+        <div class="passport-live-badge"><span class="live-dot"></span>Live</div>
+      </div>
+
+      <h2 class="passport-headline">Your Concert<br/><span class="passport-headline-accent">Passport.</span></h2>
+
+      <p class="passport-intro">Every show you check into is stamped into your passport forever. A living, breathing record of every night you showed up — growing with you for life. Keep it locked away as your own private music diary, or open it up and let the world see where you've been.</p>
+
+      <div class="passport-stats-row">
+        <div class="pstat">
+          <span class="pstat-num">Every</span>
+          <span class="pstat-label">Venue you've stood in</span>
+        </div>
+        <div class="pstat-divider"></div>
+        <div class="pstat">
+          <span class="pstat-num">Every</span>
+          <span class="pstat-label">Date burned into your memory</span>
+        </div>
+        <div class="pstat-divider"></div>
+        <div class="pstat">
+          <span class="pstat-num">Every</span>
+          <span class="pstat-label">Crowd photo from the room</span>
+        </div>
+        <div class="pstat-divider"></div>
+        <div class="pstat">
+          <span class="pstat-num">Forever</span>
+          <span class="pstat-label">Yours to keep or share</span>
+        </div>
+      </div>
+
+      <div class="passport-cards-row">
+
+        <div class="pcard pcard-private">
+          <div class="pcard-top">
+            <span class="pcard-chip">🔒 Private mode</span>
+          </div>
+          <h3 class="pcard-title">Your secret history.</h3>
+          <p class="pcard-body">Not everything needs to be public. Your passport is locked by default — a personal archive only you can see. Every show, every moment, every year. Yours alone.</p>
+          <div class="pcard-shows">
+            <div class="pcard-show"><span class="pcs-bar" style="background:var(--amber);width:90%"></span><span class="pcs-name">Radiohead — Glastonbury '03</span></div>
+            <div class="pcard-show"><span class="pcs-bar" style="background:var(--violet);width:70%"></span><span class="pcs-name">The Strokes — Brixton '06</span></div>
+            <div class="pcard-show"><span class="pcs-bar" style="background:var(--rose);width:55%"></span><span class="pcs-name">LCD Soundsystem — Ally Pally '11</span></div>
+            <div class="pcard-show pcs-blur"><span class="pcs-bar" style="background:var(--muted);width:80%"></span><span class="pcs-name">██████████████████</span></div>
+            <div class="pcard-show pcs-blur"><span class="pcs-bar" style="background:var(--muted);width:45%"></span><span class="pcs-name">██████████████</span></div>
+          </div>
+          <div class="pcard-footer">47 shows · private</div>
+        </div>
+
+        <div class="pcard pcard-share">
+          <div class="pcard-top">
+            <span class="pcard-chip pcard-chip-amber">🔗 Share mode</span>
+          </div>
+          <h3 class="pcard-title">Brag about it.</h3>
+          <p class="pcard-body">When you're ready to show off, flip it public. Share a link. Let people scroll through your history. Proof you were there — for every single one.</p>
+          <div class="passport-share-preview">
+            <div class="share-avatar">🎸</div>
+            <div class="share-info">
+              <span class="share-name">@jordanwashere</span>
+              <span class="share-sub">47 shows · 12 years · 6 countries</span>
+            </div>
+            <span class="share-btn">View Passport →</span>
+          </div>
+          <div class="share-tags">
+            <span class="stag">Glastonbury ×4</span>
+            <span class="stag">Reading ×6</span>
+            <span class="stag">O2 Arena ×11</span>
+            <span class="stag">Brixton Academy ×8</span>
+            <span class="stag">Madison Square Garden ×2</span>
+            <span class="stag stag-more">+31 venues</span>
+          </div>
+          <div class="pcard-footer pcard-footer-amber">47 shows · shareable link active</div>
+        </div>
+
+      </div>
+
+      <p class="passport-footnote">The passport grows every time you check in. Miss a show before Afterglow? <span>Retroactive import coming soon.</span></p>
+    </div>
+  </section>
+
+  <!-- MANIFESTO / BOTTOM CTA -->
+  <section class="manifesto" id="waitlist-bottom">
+    <div class="manifesto-inner">
+      <blockquote>
+        "You earned<br/>
+        <span>your place here."</span>
+      </blockquote>
+      <p>Afterglow isn't a social network. It's the room after the show — warm, loud, and only open to the people who showed up. Be first in.</p>
+
+      <div class="waitlist-2">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button type="button">Join the Waitlist</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="logo">Afterglow</span>
+    <p>© 2026 Afterglow &nbsp;·&nbsp; Made for the ones who showed up.</p>
+  </footer>
+
+</body>
+</html>

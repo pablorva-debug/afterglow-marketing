@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>App Icon · Afterimage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #07060d;
+    --deep:  #191626;
+    --amber: #f5a623;
+    --white: #f0eef8;
+    --muted: rgba(240,238,248,0.5);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--black); color: var(--white); font-family: 'DM Sans', system-ui, sans-serif; }
+  body::before { content:''; position: fixed; inset: 0; pointer-events: none; z-index: 2;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.5; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 8rem; position: relative; z-index: 1; }
+
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.8rem; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 5vw, 3.5rem); letter-spacing: 0.02em; line-height: 0.95; margin: 0 0 0.8rem; }
+  .sub { color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 640px; margin: 0 0 3.5rem; }
+
+  section { margin-bottom: 4.5rem; }
+  .sec-head { display: flex; align-items: baseline; gap: 0.9rem; margin-bottom: 1.4rem; }
+  .sec-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; margin: 0; color: var(--white); }
+  .sec-head .label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+  /* iOS-style rounded-square icon container */
+  .ios-icon {
+    background: var(--black);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Row layouts */
+  .row { display: flex; align-items: flex-end; gap: 2.4rem; flex-wrap: wrap; padding: 1.5rem 0; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 0.65rem; }
+  .col .caption { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; text-align: center; }
+  .col .caption b { display: block; color: var(--white); margin-bottom: 2px; }
+
+  /* Browser tab strip mock */
+  .tabstrip { display: flex; align-items: center; gap: 6px; padding: 8px; background: #1c1d21; border-radius: 8px 8px 0 0; max-width: 720px; }
+  .tab { display: flex; align-items: center; gap: 8px; padding: 7px 11px; background: #2a2b30; border-radius: 6px; font-size: 12px; color: #c8c8ca; min-width: 0; }
+  .tab.active { background: #0a0911; color: var(--white); }
+  .tab-favicon { width: 16px; height: 16px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
+  .tab-label { font-family: 'DM Sans', sans-serif; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* iOS home-screen mock (simulates app icon among others) */
+  .home-grid {
+    background: linear-gradient(180deg, #243949 0%, #0a3052 100%);
+    padding: 28px 22px; border-radius: 38px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 14px;
+    max-width: 360px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .home-icon { aspect-ratio: 1; border-radius: 20%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+  .home-icon-label { font-family: 'DM Sans', sans-serif; font-size: 10px; color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.4); text-align: center; margin-top: 4px; }
+  .home-cell { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .home-icon.placeholder-1 { background: linear-gradient(135deg, #ff6b6b, #ee5a52); }
+  .home-icon.placeholder-2 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+  .home-icon.placeholder-3 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+  .home-icon.placeholder-4 { background: linear-gradient(135deg, #fa709a, #fee140); }
+  .home-icon.placeholder-5 { background: #1a1a1a; }
+  .home-icon.placeholder-6 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+  .home-icon.placeholder-7 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+  .home-icon.placeholder-8 { background: var(--black); border: 1px solid rgba(255,255,255,0.08); }
+
+  /* On light surface (for marketing collateral check) */
+  .light-card { background: #f0eef8; padding: 2rem; border-radius: 12px; display: inline-flex; align-items: center; gap: 2rem; }
+  .light-card .col .caption { color: rgba(40,30,20,0.6); }
+  .light-card .col .caption b { color: rgba(40,30,20,0.9); }
+  /* When the icon is on light, change the icon container bg */
+  .light-card .ios-icon { background: var(--black); }
+
+  .takeaway { background: rgba(245,166,35,0.04); border: 1px solid rgba(245,166,35,0.18); border-radius: 6px; padding: 1.2rem 1.4rem; font-size: 0.88rem; line-height: 1.65; color: rgba(240,238,248,0.85); }
+  .takeaway b { color: var(--amber); font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<main>
+  <div class="eyebrow">App icon · Afterimage (loud)</div>
+  <h1>The A, stamped at every size.</h1>
+  <p class="sub">Same chromatic offset as the wordmark — violet behind, rose in the middle, amber in front — on the standard Afterglow black tile. Below: each context the icon needs to survive in, real size.</p>
+
+  <!-- ── App Store / iOS launch ── -->
+  <section>
+    <div class="sec-head"><h2>App Store &amp; iOS</h2><span class="label">1024 · 180 · 120 · 87 · 60</span></div>
+    <div class="row">
+      <div class="col">
+        <div class="ios-icon" style="width:200px;height:200px;border-radius:44px"><span data-icon="200"></span></div>
+        <div class="caption"><b>1024 → 200</b>App Store</div>
+      </div>
+      <div class="col">
+        <div class="ios-icon" style="width:140px;height:140px;border-radius:31px"><span data-icon="140"></span></div>
+        <div class="caption"><b>180</b>iPhone</div>
+      </div>
+      <div class="col">
+        <div class="ios-icon" style="width:100px;height:100px;border-radius:22px"><span data-icon="100"></span></div>
+        <div class="caption"><b>120</b>Spotlight</div>
+      </div>
+      <div class="col">
+        <div class="ios-icon" style="width:72px;height:72px;border-radius:16px"><span data-icon="72"></span></div>
+        <div class="caption"><b>87</b>Settings</div>
+      </div>
+      <div class="col">
+        <div class="ios-icon" style="width:60px;height:60px;border-radius:13px"><span data-icon="60"></span></div>
+        <div class="caption"><b>60</b>Notification</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Web favicon ── -->
+  <section>
+    <div class="sec-head"><h2>Web favicon</h2><span class="label">32 · 16 · in a browser tab</span></div>
+    <div class="row" style="align-items: center; gap: 3rem">
+      <div class="col">
+        <div class="ios-icon" style="width:32px;height:32px;border-radius:6px"><span data-icon="32"></span></div>
+        <div class="caption"><b>32 × 32</b>Standard</div>
+      </div>
+      <div class="col">
+        <div class="ios-icon" style="width:16px;height:16px;border-radius:3px"><span data-icon="16"></span></div>
+        <div class="caption"><b>16 × 16</b>Tab favicon</div>
+      </div>
+      <div class="col" style="flex: 1; align-items: stretch">
+        <div class="tabstrip">
+          <div class="tab active">
+            <span class="tab-favicon"><span data-icon="16"></span></span>
+            <span class="tab-label">Afterglow — Every show. Stamped forever.</span>
+          </div>
+          <div class="tab">
+            <span class="tab-favicon" style="background:#aaa;border-radius:3px;width:16px;height:16px"></span>
+            <span class="tab-label">Gmail</span>
+          </div>
+          <div class="tab">
+            <span class="tab-favicon" style="background:#1da1f2;border-radius:3px;width:16px;height:16px"></span>
+            <span class="tab-label">X / Twitter</span>
+          </div>
+        </div>
+        <div class="caption" style="margin-top: 0.6rem; text-align:left">A real browser-tab strip</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Home screen ── -->
+  <section>
+    <div class="sec-head"><h2>iOS home screen</h2><span class="label">Among other apps</span></div>
+    <div class="row">
+      <div class="home-grid">
+        <div class="home-cell"><div class="home-icon placeholder-1"></div><div class="home-icon-label">Music</div></div>
+        <div class="home-cell"><div class="home-icon placeholder-2"></div><div class="home-icon-label">Maps</div></div>
+        <div class="home-cell"><div class="home-icon placeholder-3"></div><div class="home-icon-label">Notes</div></div>
+        <div class="home-cell"><div class="home-icon placeholder-4"></div><div class="home-icon-label">Photos</div></div>
+
+        <div class="home-cell"><div class="home-icon placeholder-5"></div><div class="home-icon-label">Camera</div></div>
+        <div class="home-cell"><div class="home-icon placeholder-6"></div><div class="home-icon-label">Spotify</div></div>
+        <div class="home-cell"><div class="home-icon placeholder-7"></div><div class="home-icon-label">Wallet</div></div>
+
+        <div class="home-cell">
+          <div class="ios-icon home-icon" style="border-radius:20%"><span data-icon="68"></span></div>
+          <div class="home-icon-label" style="color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5)">Afterglow</div>
+        </div>
+      </div>
+      <div class="takeaway" style="max-width: 360px">
+        <b>What to look for</b>
+        Does Afterglow stand out from the colourful default Apple/Spotify icons without trying too hard? The deep-black tile is the trick — it pulls focus the way a real concert poster does.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── On light backgrounds (rare, but real) ── -->
+  <section>
+    <div class="sec-head"><h2>Stamped on light</h2><span class="label">For business cards / press kit</span></div>
+    <div class="row">
+      <div class="light-card">
+        <div class="col">
+          <div class="ios-icon" style="width:120px;height:120px;border-radius:26px"><span data-icon="120"></span></div>
+          <div class="caption"><b>120</b>Press kit</div>
+        </div>
+        <div class="col">
+          <div class="ios-icon" style="width:64px;height:64px;border-radius:14px"><span data-icon="64"></span></div>
+          <div class="caption"><b>64</b>Business card</div>
+        </div>
+        <div class="col">
+          <div class="ios-icon" style="width:40px;height:40px;border-radius:9px"><span data-icon="40"></span></div>
+          <div class="caption"><b>40</b>Email signature</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mark only, naked (no tile) ── -->
+  <section>
+    <div class="sec-head"><h2>Mark only — no tile</h2><span class="label">For watermarks &amp; co-branding</span></div>
+    <div class="row" style="align-items:center;gap:3rem">
+      <div class="col">
+        <span data-icon="200"></span>
+        <div class="caption"><b>200</b>Full-bleed</div>
+      </div>
+      <div class="col">
+        <span data-icon="120"></span>
+        <div class="caption"><b>120</b>Mid</div>
+      </div>
+      <div class="col">
+        <span data-icon="64"></span>
+        <div class="caption"><b>64</b>Small</div>
+      </div>
+      <div class="col">
+        <span data-icon="32"></span>
+        <div class="caption"><b>32</b>Tiny</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Verdict ── -->
+  <section>
+    <div class="takeaway">
+      <b>How it reads at each size</b>
+      <p style="margin:0 0 0.8rem">At <strong style="color:var(--amber)">100–200 px</strong> the chromatic offset reads beautifully — the violet trail behind the amber A is clearly legible, the rose mid-layer gives it warmth. This is the icon's home turf.</p>
+      <p style="margin:0 0 0.8rem">At <strong style="color:var(--amber)">60–87 px</strong> the trails get tighter but the warm halo around the A still carries the brand feel.</p>
+      <p style="margin:0">At <strong style="color:var(--amber)">16–32 px</strong> the chromatic effect compresses to a slight violet/pink halo around the amber A. Still distinctly Afterglow but loses the trail metaphor. If you want crisper favicons, I can add a simplified solid-amber A fallback that kicks in below 40 px — say the word.</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="landing-logos.js"></script>
+<script>
+  // Inject the chromatic A mark into every [data-icon] slot
+  document.querySelectorAll('[data-icon]').forEach(slot => {
+    const size = parseFloat(slot.getAttribute('data-icon'));
+    slot.appendChild(window.AfterglowLogos.buildMark('D3-loud', size));
+  });
+</script>
+
+</body>
+</html>

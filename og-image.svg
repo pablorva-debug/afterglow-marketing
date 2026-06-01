@@ -1,0 +1,136 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgViolet" cx="50%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#7b4fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#07060d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgAmber" cx="85%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#f5a623" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#07060d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgRose" cx="10%" cy="85%" r="40%">
+      <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#07060d" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Stamp gradient accent -->
+    <linearGradient id="stampAccent1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#ff6b9d"/>
+    </linearGradient>
+    <linearGradient id="stampAccent2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#7b4fff"/>
+    </linearGradient>
+    <linearGradient id="stampAccent3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7b4fff"/>
+      <stop offset="100%" stop-color="#f5a623"/>
+    </linearGradient>
+    <!-- Wristband gradient -->
+    <linearGradient id="wristband" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#7b4fff"/>
+      <stop offset="33%"  stop-color="#ff6b9d"/>
+      <stop offset="66%"  stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#7b4fff"/>
+    </linearGradient>
+    <!-- Noise filter -->
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="noisy"/>
+      <feComposite in="noisy" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1200" height="630" fill="#07060d"/>
+
+  <!-- Glow layers -->
+  <rect width="1200" height="630" fill="url(#bgViolet)"/>
+  <rect width="1200" height="630" fill="url(#bgAmber)"/>
+  <rect width="1200" height="630" fill="url(#bgRose)"/>
+
+  <!-- Noise overlay -->
+  <rect width="1200" height="630" fill="#07060d" opacity="0.0"/>
+  <rect width="1200" height="630" filter="url(#noise)" opacity="0.04" fill="#8a86a0"/>
+
+  <!-- Top wristband stripe -->
+  <rect x="0" y="0" width="1200" height="5" fill="url(#wristband)"/>
+
+  <!-- ─── LEFT SIDE: BRANDING ─── -->
+
+  <!-- Logo wordmark -->
+  <text x="72" y="122" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" fill="#f5a623" letter-spacing="6" opacity="1">AFTERGLOW</text>
+
+  <!-- Tagline -->
+  <text x="74" y="162" font-family="'Courier New', monospace" font-size="15" fill="#8a86a0" letter-spacing="4" text-transform="uppercase">GPS-VERIFIED CONCERT PASSPORT</text>
+
+  <!-- Divider line -->
+  <rect x="72" y="188" width="260" height="1" fill="#f5a623" opacity="0.3"/>
+
+  <!-- Hero copy -->
+  <text x="72" y="258" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700" fill="#f0eef8" letter-spacing="-1">Every show.</text>
+  <text x="72" y="338">
+    <tspan font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700" letter-spacing="-1">
+      <tspan fill="#f5a623">Stamped</tspan>
+      <tspan fill="#f0eef8"> forever.</tspan>
+    </tspan>
+  </text>
+
+  <!-- Sub copy -->
+  <text x="74" y="400" font-family="'Courier New', monospace" font-size="16" fill="#8a86a0" letter-spacing="1">Check in at the venue. Share with the crowd who was there.</text>
+
+  <!-- Live pill -->
+  <rect x="72" y="448" width="148" height="34" rx="17" fill="rgba(74,222,128,0.08)" stroke="rgba(74,222,128,0.3)" stroke-width="1"/>
+  <circle cx="96" cy="465" r="5" fill="#4ade80"/>
+  <text x="110" y="470" font-family="'Courier New', monospace" font-size="12" fill="#4ade80" letter-spacing="3">NOW LIVE</text>
+
+  <!-- URL -->
+  <text x="74" y="572" font-family="'Courier New', monospace" font-size="16" fill="#f5a623" letter-spacing="2" opacity="0.8">weareafterglow.app</text>
+
+  <!-- Bottom border line -->
+  <rect x="0" y="625" width="1200" height="5" fill="url(#wristband)" opacity="0.5"/>
+
+  <!-- ─── RIGHT SIDE: STACKED PASSPORT STAMPS ─── -->
+
+  <!-- Stamp 1 (back, rotated) -->
+  <g transform="translate(720, 80) rotate(6)">
+    <rect x="0" y="0" width="390" height="130" rx="6" fill="#0f0d1a" stroke="rgba(245,166,35,0.18)" stroke-width="1" opacity="0.7"/>
+    <rect x="0" y="0" width="4" height="130" rx="2" fill="url(#stampAccent3)"/>
+    <text x="22" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#f0eef8" letter-spacing="1" opacity="0.6">Kendrick Lamar</text>
+    <text x="22" y="66" font-family="'Courier New', monospace" font-size="11" fill="#8a86a0" letter-spacing="2" opacity="0.6">MADISON SQUARE GARDEN · NYC · 22.11.25</text>
+    <rect x="22" y="82" width="82" height="22" rx="2" fill="rgba(245,166,35,0.14)" stroke="rgba(245,166,35,0.3)" stroke-width="1" opacity="0.6"/>
+    <text x="32" y="97" font-family="'Courier New', monospace" font-size="10" fill="#f5a623" letter-spacing="2" opacity="0.6">WAS THERE</text>
+  </g>
+
+  <!-- Stamp 2 (middle, slight rotate) -->
+  <g transform="translate(690, 190) rotate(-3)">
+    <rect x="0" y="0" width="390" height="130" rx="6" fill="#0f0d1a" stroke="rgba(245,166,35,0.18)" stroke-width="1" opacity="0.88"/>
+    <rect x="0" y="0" width="4" height="130" rx="2" fill="url(#stampAccent2)"/>
+    <text x="22" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#f0eef8" letter-spacing="1" opacity="0.88">Bad Bunny</text>
+    <text x="22" y="66" font-family="'Courier New', monospace" font-size="11" fill="#8a86a0" letter-spacing="2" opacity="0.88">FORO SOL · MEXICO CITY · 14.03.26</text>
+    <rect x="22" y="82" width="100" height="22" rx="2" fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.3)" stroke-width="1" opacity="0.88"/>
+    <text x="30" y="97" font-family="'Courier New', monospace" font-size="10" fill="#4ade80" letter-spacing="2" opacity="0.88">✓ CHECKED IN</text>
+  </g>
+
+  <!-- Stamp 3 (front, straight) -->
+  <g transform="translate(660, 310) rotate(2)">
+    <rect x="0" y="0" width="390" height="145" rx="6" fill="#140d20" stroke="rgba(245,166,35,0.28)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="4" height="145" rx="2" fill="url(#stampAccent1)"/>
+    <text x="22" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" fill="#f0eef8" letter-spacing="1">Coldplay</text>
+    <text x="22" y="72" font-family="'Courier New', monospace" font-size="11" fill="#8a86a0" letter-spacing="2">WEMBLEY STADIUM · LONDON · 02.05.26</text>
+    <rect x="22" y="90" width="100" height="24" rx="2" fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.35)" stroke-width="1"/>
+    <text x="30" y="106" font-family="'Courier New', monospace" font-size="10" fill="#4ade80" letter-spacing="2">✓ CHECKED IN</text>
+    <!-- Small decorative ticket perforations -->
+    <line x1="22" y1="126" x2="368" y2="126" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,5"/>
+    <text x="22" y="140" font-family="'Courier New', monospace" font-size="10" fill="#8a86a0" letter-spacing="3" opacity="0.5">PASSPORT ENTRY #0214</text>
+  </g>
+
+  <!-- Vertical label on far right -->
+  <text x="1168" y="420" font-family="'Courier New', monospace" font-size="11" fill="#8a86a0" letter-spacing="4" opacity="0.35" transform="rotate(90, 1168, 420)">EVERY SHOW · STAMPED FOREVER</text>
+
+</svg>

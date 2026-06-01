@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Afterglow · Logo · Round 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #f0eee9; font-family: "DM Sans", system-ui, sans-serif; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="logos.jsx"></script>
+<script type="text/babel" src="demos.jsx"></script>
+
+<script type="text/babel">
+
+// ── Concept definitions ────────────────────────────────────────────
+const CONCEPTS = [
+  {
+    id: 'C3',
+    title: '03 · Afterimage',
+    subtitle: 'Wordmark trailed by ghosted copies — long-exposure of a stage light. Three palette takes.',
+    variants: [
+      { id: 'D3',  name: 'Original',    note: 'Violet → rose → amber chromatic offset. Uses the wristband palette.' },
+      { id: 'D3b', name: 'Warm sunset', note: 'Rust → amber → pale gold. Heat-haze; no purple.' },
+      { id: 'D3c', name: 'Mono-amber',  note: 'Single amber repeated with fading opacity. Pure decaying light trail.' },
+    ],
+    leadVariant: 'D3c',   // amber-only takes the in-context slots
+  },
+  {
+    id: 'C4',
+    title: '04 · Glow Disc',
+    subtitle: 'The amber sun. Three reads from solid to dissolved.',
+    variants: [
+      { id: 'D4',  name: 'Solid sun',   note: 'Defined disc with A on the surface. Boldest at small sizes.' },
+      { id: 'D4b', name: 'Eclipse',     note: 'White A in front, glow disc bleeding behind. Most cinematic.' },
+      { id: 'D4c', name: 'Halo',        note: 'No hard edge — pure radial bloom. Closest to a literal afterglow.' },
+    ],
+    leadVariant: 'D4',
+  },
+  {
+    id: 'C7',
+    title: '07 · Pulse',
+    subtitle: 'The Live-badge dot, integrated into the identity. Three placements.',
+    variants: [
+      { id: 'D7',  name: 'Trail dot',   note: 'Dot after the wordmark — a heartbeat following the type.' },
+      { id: 'D7b', name: 'Counter-O',   note: 'The O in AFTERGLOW becomes the pulsing disc. Most integrated.' },
+      { id: 'D7c', name: 'Ripple',      note: 'Dot with sonar rings — outward sound wave. Most "live"-coded.' },
+    ],
+    leadVariant: 'D7b',
+  },
+];
+
+// ── Concept section: 3 variants + 3 context shots of lead ──────────
+function ConceptBlock({ c }) {
+  return (
+    <>
+      <DCSection id={c.id} title={c.title} subtitle={c.subtitle}>
+        {c.variants.map(v => {
+          const Mark = window[`${v.id}_Mark`];
+          const Logo = window[`${v.id}_Logo`];
+          return (
+            <DCArtboard key={v.id} id={`${v.id}-card`} label={v.name} width={460} height={300}>
+              <div style={{ width: '100%', height: '100%', background: '#0a0911',
+                            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                            gap: 26, padding: '28px 24px', boxSizing: 'border-box' }}>
+                <Mark size={120} />
+                <Logo size={42} />
+                <div style={{
+                  fontFamily: '"DM Mono", monospace', fontSize: 9.5, letterSpacing: '0.14em',
+                  textTransform: 'uppercase', color: 'rgba(240,238,248,0.42)',
+                  textAlign: 'center', maxWidth: 360, lineHeight: 1.55,
+                }}>{v.note}</div>
+              </div>
+            </DCArtboard>
+          );
+        })}
+      </DCSection>
+      <DCSection
+        id={`${c.id}-ctx`}
+        title={`${c.title} · In context`}
+        subtitle={`Using "${c.variants.find(v => v.id === c.leadVariant).name}" as the lead variant.`}
+      >
+        <DCArtboard id={`${c.id}-ctx-app`} label="In-app · top-right" width={390} height={220}>
+          <AppTopRight direction={c.leadVariant} />
+        </DCArtboard>
+        <DCArtboard id={`${c.id}-ctx-store`} label="App Store listing" width={460} height={172}>
+          <AppStoreCard direction={c.leadVariant} />
+        </DCArtboard>
+        <DCArtboard id={`${c.id}-ctx-hero`} label="Marketing hero" width={600} height={320}>
+          <MarketingHero direction={c.leadVariant} />
+        </DCArtboard>
+      </DCSection>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection
+        id="intro"
+        title="Afterglow · Logo · Round 2"
+        subtitle="Three concepts, three takes each. The first row of each section compares variants; the second row shows the current lead in context."
+      >
+        <DCArtboard id="intro-note" label="What changed" width={620} height={220}>
+          <div style={{ padding: 26, background: '#0a0911', height: '100%', color: '#f0eef8',
+                        fontFamily: '"DM Sans", sans-serif', display: 'flex', flexDirection: 'column',
+                        justifyContent: 'space-between', boxSizing: 'border-box' }}>
+            <div style={{ fontFamily: '"Bebas Neue", sans-serif', fontSize: 28 }}>ROUND 2 · KEEPING THREE</div>
+            <div style={{ fontSize: 13, lineHeight: 1.55, color: 'rgba(240,238,248,0.75)' }}>
+              Afterimage now in three palettes incl. an amber-only / sunset version.<br/>
+              Glow Disc explored as solid, eclipse, and halo.<br/>
+              Pulse explored as trail, counter-O, and ripple.
+            </div>
+            <div style={{ fontFamily: '"DM Mono", monospace', fontSize: 10, letterSpacing: '0.18em',
+                          textTransform: 'uppercase', color: 'rgba(240,238,248,0.45)' }}>
+              Tell me which variant of each to push further →
+            </div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+
+      {CONCEPTS.map(c => <ConceptBlock key={c.id} c={c} />)}
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
