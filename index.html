@@ -19,6 +19,16 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
   <meta name="theme-color" content="#07060d" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch((err) => {
+          console.error('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
 
   <!-- ─── OPEN GRAPH ─── -->
   <meta property="og:type"        content="website" />
@@ -1867,6 +1877,133 @@
       .features { padding: 4rem 2rem; }
     }
 
+    /* ─── PHOTOS BANNER SECTION ─── */
+    .photos-banner-section {
+      background: var(--black);
+      padding: 5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .photos-banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .photos-intro {
+      max-width: 600px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+    .photos-banner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      margin-bottom: 2.5rem;
+    }
+    .photo-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      width: 100%;
+    }
+    .photo-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5.2;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.55);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .photo-wrapper:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,166,35,0.45);
+    }
+    .photo-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(7,6,13,0.7) 100%);
+      pointer-events: none;
+    }
+    .photo-handle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .photo-cell:hover .photo-handle {
+      opacity: 1;
+    }
+    .photo-comment {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0.2rem 0 0 0;
+      line-height: 1.45;
+      max-width: 280px;
+    }
+    .photos-banner-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+    .photos-banner-count span {
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    /* Centered friends card constraint */
+    .passport-cards-row .pcard-friends {
+      max-width: 640px !important;
+      margin: 0 auto !important;
+      justify-self: center !important;
+      width: 100% !important;
+    }
+    @media (max-width: 768px) {
+      .photos-banner-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .photos-banner-grid::-webkit-scrollbar {
+        display: none;
+      }
+      .photo-cell {
+        flex: 0 0 78vw;
+        scroll-snap-align: start;
+      }
+      .photo-wrapper {
+        aspect-ratio: 4/5.2;
+      }
+      .photos-banner-section {
+        padding: 3.5rem 0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1917,13 +2054,13 @@
     </div>
 
     <h1 class="hero-title" id="hero-heading">
-      Every show.<br/>
-      <span>Stamped forever.</span>
+      Plan the night.<br/>
+      <span>Keep it forever.</span>
     </h1>
 
     <p class="hero-sub">
-      The GPS-verified concert passport for live music fans.<br/>
-      <em>Every show, stamped. Every memory, kept.</em>
+      See where your friends are going and join them.<br/>
+      <em>Then relive the night through photos from everyone who was there.</em>
     </p>
 
     <!-- Passport visual mockup -->
@@ -1946,7 +2083,7 @@
     </div>
 
     <div class="hero-cta-group">
-      <a class="hero-signup-btn" href="https://go.weareafterglow.app/welcome">Start your concert passport →</a>
+      <a class="hero-signup-btn" href="https://go.weareafterglow.app/welcome">Start planning tonight →</a>
       <p class="hero-fine">Free to join</p>
     </div>
 
@@ -2004,23 +2141,116 @@
         <article class="step">
           <span class="step-num" aria-hidden="true">01</span>
           <div class="step-icon" aria-hidden="true"></div>
-          <h3>Find your show</h3>
-          <p>Search any artist, any venue, anywhere. Add past shows to your passport or mark upcoming ones as <em>Going</em>. Your history starts on day one.</p>
+          <h3>See where your people are</h3>
+          <p>Follow friends and see every show they're going to — or add your own. Know before the night who else is going to be there.</p>
         </article>
 
         <article class="step">
           <span class="step-num" aria-hidden="true">02</span>
           <div class="step-icon" aria-hidden="true"></div>
           <h3>Check in at the venue</h3>
-          <p>GPS confirms you were <em>actually there.</em> Verified attendance is the key to the room — only people who showed up get in.</p>
+          <p>GPS confirms you were actually there. Unlocks the Concert Room — photos, reactions, and the crowd who showed up alongside you.</p>
         </article>
 
         <article class="step">
           <span class="step-num" aria-hidden="true">03</span>
           <div class="step-icon" aria-hidden="true"></div>
-          <h3>Stamp your passport</h3>
-          <p>Every show is added to your passport permanently. Post photos, rate the night across three axes, and relive it with the crowd who lived it.</p>
+          <h3>Relive the night</h3>
+          <p>See every photo shared by the crowd who was there. Rate the night. Connect with people who share your taste — long after the lights come up.</p>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS BANNER SECTION -->
+  <section class="photos-banner-section" aria-labelledby="photos-banner-heading">
+    <div class="photos-banner-inner">
+      <span class="section-label">Show Rooms</span>
+      <h2 class="section-title" id="photos-banner-heading">The night, as it actually felt.</h2>
+      <p class="photos-intro">Every show has its own photo space, visible only to people who checked in at the venue. Raw, real moments from the crowd who was there.</p>
+
+      <div class="photos-banner-grid">
+        <div class="photo-cell">
+          <div class="photo-wrapper" style="background-image: url('/onboarding/concert-room-1.png');" role="img" aria-label="Concert photo by @AriaOr"></div>
+          <span class="photo-handle">@AriaOr</span>
+          <p class="photo-comment">"Front row when the bass dropped! Unbelievable energy 😭🙌"</p>
+        </div>
+        <div class="photo-cell">
+          <div class="photo-wrapper" style="background-image: url('/onboarding/concert-room-2.png');" role="img" aria-label="Concert photo by @CamLBO"></div>
+          <span class="photo-handle">@CamLBO</span>
+          <p class="photo-comment">"Stage lights completely took over the arena. Pure magic ✨"</p>
+        </div>
+        <div class="photo-cell">
+          <div class="photo-wrapper" style="background-image: url('/onboarding/concert-room-3.jpg');" role="img" aria-label="Concert photo by @Manu"></div>
+          <span class="photo-handle">@Manu</span>
+          <p class="photo-comment">"Everyone singing along to the acoustic encore. Chills. 🎶"</p>
+        </div>
+      </div>
+
+      <div class="photos-banner-count">
+        Keep your photos private or share them with everyone. <span>It's up to you.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL SECTION -->
+  <section class="passport-section" aria-labelledby="social-heading">
+    <div class="passport-glow-left"></div>
+    <div class="passport-glow-right"></div>
+
+    <div class="section-inner">
+      <div class="passport-eyebrow">
+        <span class="section-label" style="margin-bottom:0">Social</span>
+        <div class="passport-live-badge"><span class="live-dot"></span>Live</div>
+      </div>
+
+      <h2 class="passport-headline" id="social-heading">Know where your<br/><span class="passport-headline-accent">people are going.</span></h2>
+
+      <p class="passport-intro">See who's checking in live tonight. Discover gigs through people you trust — not an algorithm.</p>
+
+      <div class="passport-cards-row">
+
+        <!-- FRIENDS CARD -->
+        <div class="pcard pcard-friends">
+          <div class="pcard-top">
+            <span class="pcard-chip pcard-chip-violet">Friends</span>
+          </div>
+          <h3 class="pcard-title">Know before you go.</h3>
+          <p class="pcard-body">Follow friends and see every show they've marked as Going or Wishlist. Discover gigs through people you actually trust — and meet new people with the exact same taste at every show.</p>
+
+          <div class="friends-mock">
+            <div class="friend-entry">
+              <div class="friend-avatar friend-avatar-1">M</div>
+              <div class="friend-info">
+                <span class="friend-name">@maya_b</span>
+                <span class="friend-action">is going to <strong>Stormzy · Brixton Academy</strong></span>
+                <span class="friend-date">Sat 14 Jun</span>
+              </div>
+              <span class="friend-badge friend-going">Going</span>
+            </div>
+            <div class="friend-entry">
+              <div class="friend-avatar friend-avatar-2">O</div>
+              <div class="friend-info">
+                <span class="friend-name">@oliver_h</span>
+                <span class="friend-action">wishlisted <strong>Charli XCX · The O2</strong></span>
+                <span class="friend-date">Thu 3 Jul</span>
+              </div>
+              <span class="friend-badge friend-wish">Wishlist</span>
+            </div>
+            <div class="friend-entry">
+              <div class="friend-avatar friend-avatar-3">Z</div>
+              <div class="friend-info">
+                <span class="friend-name">@zara.k</span>
+                <span class="friend-action">just checked into <strong>Fred again.. · Printworks</strong></span>
+                <span class="friend-date">Tonight</span>
+              </div>
+              <span class="friend-badge friend-live">● Live</span>
+            </div>
+          </div>
+
+          <div class="pcard-footer pcard-footer-violet">Open follow model · meet people at every show</div>
+        </div>
 
       </div>
     </div>
@@ -2047,14 +2277,14 @@
         </article>
 
         <article class="feature-card">
-          <span class="feature-tag">No clutter</span>
-          <h3>Three photos. Lifetime.</h3>
-          <p>Not three a day. Three <em>ever</em>, per show. A creative constraint that captures the night as it actually felt — not reconstructed weeks later.</p>
+          <span class="feature-tag">Photos</span>
+          <h3>The night, as it actually was.</h3>
+          <p>Every show has its own photo room — visible only to the crowd who was there. No filters, no highlight reels. Just the real moments, kept forever.</p>
         </article>
 
         <article class="feature-card">
           <span class="feature-tag">Archive</span>
-          <h3>Your concert passport, forever</h3>
+          <h3>Your memories, forever</h3>
           <p>Every show you attend is recorded permanently. A public URL you can share anywhere — or keep it private. <em>Rooms close. Memories stay.</em></p>
         </article>
 
@@ -2143,52 +2373,13 @@
           <div class="pcard-footer pcard-footer-amber">One toggle per show · change anytime</div>
         </div>
 
-        <!-- FRIENDS CARD -->
-        <div class="pcard pcard-friends">
-          <div class="pcard-top">
-            <span class="pcard-chip pcard-chip-violet">Friends</span>
-          </div>
-          <h3 class="pcard-title">See where your people are going.</h3>
-          <p class="pcard-body">Follow friends and see every show they've marked as Going or Wishlist. Discover concerts through people you actually trust — not an algorithm.</p>
-
-          <div class="friends-mock">
-            <div class="friend-entry">
-              <div class="friend-avatar friend-avatar-1">M</div>
-              <div class="friend-info">
-                <span class="friend-name">@maya_b</span>
-                <span class="friend-action">is going to <strong>Stormzy · Brixton Academy</strong></span>
-                <span class="friend-date">Sat 14 Jun</span>
-              </div>
-              <span class="friend-badge friend-going">Going</span>
-            </div>
-            <div class="friend-entry">
-              <div class="friend-avatar friend-avatar-2">O</div>
-              <div class="friend-info">
-                <span class="friend-name">@oliver_h</span>
-                <span class="friend-action">wishlisted <strong>Charli XCX · The O2</strong></span>
-                <span class="friend-date">Thu 3 Jul</span>
-              </div>
-              <span class="friend-badge friend-wish">Wishlist</span>
-            </div>
-            <div class="friend-entry">
-              <div class="friend-avatar friend-avatar-3">Z</div>
-              <div class="friend-info">
-                <span class="friend-name">@zara.k</span>
-                <span class="friend-action">just checked into <strong>Fred again.. · Printworks</strong></span>
-                <span class="friend-date">Tonight</span>
-              </div>
-              <span class="friend-badge friend-live">● Live</span>
-            </div>
-          </div>
-
-          <div class="pcard-footer pcard-footer-violet">Open follow model · no approval needed</div>
-        </div>
-
       </div>
 
       <p class="passport-footnote">Add past shows during sign-up to start your passport on day one. Every concert ever — <span>locked in forever.</span></p>
     </div>
   </section>
+
+
 
   <!-- MANIFESTO / BOTTOM CTA -->
   <section class="manifesto" id="waitlist-bottom" aria-labelledby="manifesto-heading">
@@ -2202,7 +2393,7 @@
         "You earned<br/>
         <span>your place here."</span>
       </blockquote>
-        <p id="manifesto-heading">Afterglow isn't a social network. It's proof you were there — for every concert, for life. Add your past shows on day one and your passport starts full.</p>
+      <p id="manifesto-heading">Afterglow isn't a social network. It's proof you were there — for every concert, for life. Add your past shows on day one and your passport starts full.</p>
 
       <a class="hero-signup-btn" href="https://go.weareafterglow.app/welcome">Create your free account →</a>
 
