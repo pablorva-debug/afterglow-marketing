@@ -1,6 +1,5 @@
 const CACHE_NAME = 'afterglow-pwa-cache-v1';
 const ASSETS_TO_CACHE = [
-  '/',
   '/icon.svg',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
@@ -27,6 +26,8 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
+    }).then(() => {
+      return caches.open(CACHE_NAME).then((cache) => cache.delete('/'));
     })
   );
   self.clients.claim();
