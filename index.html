@@ -342,6 +342,59 @@
       box-shadow: 0 0 48px rgba(245,166,35,0.5);
     }
 
+    /* ─── PLATFORM NOTE (web everywhere / Play on Android) ─── */
+    .platform-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 1.2rem;
+    }
+
+    .platform-note a {
+      color: rgba(245,166,35,0.85);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,166,35,0.3);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .platform-note a:hover {
+      color: var(--amber);
+      border-bottom-color: var(--amber);
+    }
+
+    /* Android only — swapped in by the platform script */
+    .platform-note-badge img {
+      display: block;
+      height: 44px;
+      width: auto;
+    }
+    .platform-note-badge {
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+    }
+
+    .footer-platform {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .footer-platform img { display: block; height: 36px; width: auto; }
+    .footer-platform span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
     /* ─── HERO ─── */
     .hero {
       position: relative;
@@ -2023,8 +2076,8 @@
       </div>
 
       <div class="nav-actions">
-        <a class="nav-login" href="https://go.weareafterglow.app/login">Log In</a>
-        <a class="nav-cta" href="https://go.weareafterglow.app/welcome">Sign Up</a>
+        <a class="nav-login" href="/login">Log In</a>
+        <a class="nav-cta" href="/welcome">Sign Up</a>
       </div>
     </nav>
   </header>
@@ -2083,8 +2136,13 @@
     </div>
 
     <div class="hero-cta-group">
-      <a class="hero-signup-btn" href="https://go.weareafterglow.app/welcome">Start planning tonight →</a>
-      <p class="hero-fine">Free to join</p>
+      <a class="hero-signup-btn" href="/welcome">Start planning tonight →</a>
+      <p class="hero-fine">Free to join · works in any browser</p>
+
+      <!-- Adaptive: Play badge on Android, home-screen hint on iOS, plain link elsewhere -->
+      <p class="platform-note" id="platform-note">
+        <a href="https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa">Android app on Google Play</a>
+      </p>
     </div>
 
     <div class="scroll-cue">
@@ -2395,7 +2453,7 @@
       </blockquote>
       <p id="manifesto-heading">Afterglow isn't a social network. It's proof you were there — for every concert, for life. Add your past shows on day one and your passport starts full.</p>
 
-      <a class="hero-signup-btn" href="https://go.weareafterglow.app/welcome">Create your free account →</a>
+      <a class="hero-signup-btn" href="/welcome">Create your free account →</a>
 
     </div>
   </section>
@@ -2405,9 +2463,45 @@
   <!-- FOOTER -->
   <footer>
     <a href="/" class="logo" aria-label="Afterglow home" id="footer-logo-slot"></a>
+
+    <div class="footer-platform">
+      <a href="https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa"
+         aria-label="Get Afterglow on Google Play">
+        <img src="assets/google-play-badge.svg" alt="Get it on Google Play" loading="lazy" />
+      </a>
+      <span>Google Play and the Google Play logo are trademarks of Google LLC.</span>
+    </div>
+
     <p>© 2026 Afterglow &nbsp;·&nbsp; Made for the ones who showed up.</p>
   </footer>
 
+
+  <!-- Platform-aware CTA subline -->
+  <script>
+    (function () {
+      var PLAY_URL = 'https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa';
+      var note = document.getElementById('platform-note');
+      if (!note) return;
+
+      var ua = navigator.userAgent || '';
+      var isAndroid = /Android/i.test(ua);
+      var isIOS = /iPhone|iPad|iPod/i.test(ua) ||
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var standalone = window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === true;
+
+      if (isAndroid) {
+        note.innerHTML =
+          '<a class="platform-note-badge" href="' + PLAY_URL + '" aria-label="Get Afterglow on Google Play">' +
+          '<img src="assets/google-play-badge.svg" alt="Get it on Google Play" />' +
+          '</a>';
+      } else if (isIOS && !standalone) {
+        note.textContent = 'On iPhone: Share → Add to Home Screen';
+      } else if (isIOS) {
+        note.textContent = '';
+      }
+    })();
+  </script>
 
   <script src="landing-logos.js"></script>
   <script>
