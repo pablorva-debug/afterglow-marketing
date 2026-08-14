@@ -3,9 +3,12 @@
   <url>
     <loc>https://weareafterglow.app/</loc>
     <lastmod>2026-08-14</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://weareafterglow.app/songkick-alternative.html</loc>
     <lastmod>2026-08-14</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
+
