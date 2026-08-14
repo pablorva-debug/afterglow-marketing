@@ -1080,7 +1080,27 @@
       color: var(--muted);
       letter-spacing: 0.05em;
     }
-
+footer .footer-links {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.4rem;
+      background: none;
+      padding: 0;
+      z-index: auto;
+    }
+    footer .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.65;
+      text-decoration: none;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--white); opacity: 1; }
     /* ─── MOBILE ─── */
     @media (max-width: 768px) {
 
@@ -2471,7 +2491,11 @@
       </a>
       <span>Google Play and the Google Play logo are trademarks of Google LLC.</span>
     </div>
-
+<nav class="footer-links" aria-label="Footer navigation">
+      <a href="/songkick-alternative.html">Songkick Alternative</a>
+      <a href="https://go.weareafterglow.app/welcome">Sign Up</a>
+      <a href="https://go.weareafterglow.app/login">Log In</a>
+    </nav>
     <p>© 2026 Afterglow &nbsp;·&nbsp; Made for the ones who showed up.</p>
   </footer>
 
