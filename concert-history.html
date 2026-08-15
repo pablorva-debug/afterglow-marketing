@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── SEO ─── -->
+  <title>How to Find Every Concert You've Been To</title>
+  <meta name="description" content="Rebuild your full gig history step by step — ticket accounts, email search operators, photos, scrobbles and bank statements. Most of it is recoverable." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Afterglow" />
+  <link rel="canonical" href="https://weareafterglow.app/concert-history.html" />
+
+  <!-- ─── OG ─── -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="https://weareafterglow.app/concert-history.html" />
+  <meta property="og:title"       content="How to Find Every Concert You've Been To" />
+  <meta property="og:description" content="Most people can recover the majority of their gig history in one evening. Here's exactly where to look — ticket accounts, email operators, photos, scrobbles, bank statements." />
+  <meta property="og:site_name"   content="Afterglow" />
+  <meta property="og:image"       content="https://weareafterglow.app/og-image.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="en_GB" />
+  <meta property="article:published_time" content="2026-08-14T00:00:00Z" />
+  <meta property="article:modified_time"  content="2026-08-14T00:00:00Z" />
+  <meta property="article:author"         content="Afterglow" />
+  <meta property="article:tag"            content="concert history" />
+  <meta property="article:tag"            content="gig list" />
+  <meta property="article:tag"            content="concert tracking" />
+
+  <!-- ─── TWITTER ─── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@weareafterglow" />
+  <meta name="twitter:title"       content="How to Find Every Concert You've Been To" />
+  <meta name="twitter:description" content="Ticket accounts, email search operators, photo metadata, scrobble spikes, bank statements — the full method for rebuilding your gig history." />
+  <meta name="twitter:image"       content="https://weareafterglow.app/og-image.jpg" />
+
+  <!-- ─── JSON-LD: HowTo + FAQ + Breadcrumb + SoftwareApplication ─── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "@id": "https://weareafterglow.app/concert-history.html#howto",
+        "name": "How to find every concert you've been to",
+        "description": "A method for reconstructing a complete concert history from ticket vendor accounts, email archives, listening data, photo libraries, bank statements and old event RSVPs.",
+        "totalTime": "PT2H",
+        "supply": [
+          { "@type": "HowToSupply", "name": "Access to your email account" },
+          { "@type": "HowToSupply", "name": "Logins for the ticket sites you've used" },
+          { "@type": "HowToSupply", "name": "Your photo library" },
+          { "@type": "HowToSupply", "name": "A blank spreadsheet" }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Check your ticket vendor order histories",
+            "text": "Log in to Ticketmaster, AXS, DICE, Eventbrite and See Tickets and open the order or past-events section of each account. These are the highest-yield sources because they give you an exact date, venue and artist with no guesswork.",
+            "url": "https://weareafterglow.app/concert-history.html#vendors"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Search your email archive with date-bounded operators",
+            "text": "Search Gmail or Outlook for confirmation emails from ticket vendors, working one or two years at a time so the results stay readable. Email reaches further back than most order histories.",
+            "url": "https://weareafterglow.app/concert-history.html#email"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Use listening data to date half-remembered shows",
+            "text": "Look for spikes in your Last.fm scrobbles or your Spotify extended streaming history. People binge an artist in the week before a gig and the day after, which narrows a vague memory to a specific week.",
+            "url": "https://weareafterglow.app/concert-history.html#listening"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Filter your photo library by date and location",
+            "text": "Search Google Photos or Apple Photos by place and date range. Dark, blurry, badly framed photos taken late in the evening at a venue address are the clearest signature of a gig, and this is the best source for shows you never bought a ticket for.",
+            "url": "https://weareafterglow.app/concert-history.html#photos"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Search bank and card statements",
+            "text": "Search your transaction history for venue names, ticket vendors and bar spend near venue postcodes. This catches box-office purchases, door entry and tickets a friend never emailed you.",
+            "url": "https://weareafterglow.app/concert-history.html#bank"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 6,
+            "name": "Recover old Facebook event RSVPs",
+            "text": "Open the past events section of your Facebook profile, or request a copy of your information and read the events file. This is the best record of the 2010s club and small-venue era, though it is also the source most likely to have gaps.",
+            "url": "https://weareafterglow.app/concert-history.html#facebook"
+          },
+          {
+            "@type": "HowToStep",
+            "position": 7,
+            "name": "Cross-reference and pin down exact dates",
+            "text": "Use setlist.fm, venue past-events archives and artist tour pages to convert an approximate memory into a confirmed date, then record four fields per show: date, artist, venue and city.",
+            "url": "https://weareafterglow.app/concert-history.html#crossref"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://weareafterglow.app/concert-history.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How far back can I realistically reconstruct my concert history?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If you have kept the same email address, roughly as far back as you have been buying tickets online — for most people that means the mid-2000s onward. Ticket vendor order histories often only display the last few years, but the confirmation emails usually survive much longer. Anything bought at a box office with cash before you had a smartphone is likely to be memory and photographs only."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I only remember the year of a gig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use listening data and photos to narrow the window, then use setlist.fm or the artist's tour page to find which date they played your city that year. A tour usually only passes through a given city once, so the year plus the city is often enough to identify the exact date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Spotify or Apple Music tell me which concerts I've been to?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Neither service records attendance. What they can do is date things: Spotify's extended streaming history, which you request through your privacy settings, shows exactly what you played and when, so a listening spike around an unremembered date is a strong clue that you had tickets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there an app that imports my concert history automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not reliably. Ticket vendors do not offer third-party apps access to your order history, so any app claiming a complete automatic import is either scraping your inbox or overstating what it does. Reconstruction is a manual job — the useful thing an app can do is give the finished list somewhere permanent to live."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where should I keep my concert list once I've built it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Build it in a spreadsheet first, because a spreadsheet is portable and nobody can take it away from you. Then, if you want it to be searchable, shareable and to keep growing, add it to a concert tracking app. Afterglow is free and keeps a permanent passport of every show, with GPS-verified check-ins for the ones you attend from now on."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Afterglow", "item": "https://weareafterglow.app/" },
+          { "@type": "ListItem", "position": 2, "name": "How to find every concert you've been to", "item": "https://weareafterglow.app/concert-history.html" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Afterglow",
+        "applicationCategory": "SocialNetworkingApplication",
+        "operatingSystem": "Web, Android",
+        "description": "Concert passport and live show social platform. Check in at the venue for a GPS-verified stamp, build a permanent history of every show you've been to, and see what friends are going to.",
+        "url": "https://weareafterglow.app",
+        "installUrl": "https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ─── FAVICONS ─── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#07060d" />
+
+  <!-- ─── FONTS ─── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" /></noscript>
+
+  <style>
+    :root {
+      --black:    #07060d;
+      --deep:     #0f0d1a;
+      --amber:    #f5a623;
+      --violet:   #7b4fff;
+      --rose:     #ff6b9d;
+      --white:    #f0eef8;
+      --muted:    #f0eef8;
+      --border:   rgba(245,166,35,0.18);
+      --border-v: rgba(123,79,255,0.18);
+      --glow-amber: 0 0 60px rgba(245,166,35,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.35;
+    }
+
+    /* ─── NAV (scoped to header so footer nav is never pinned) ─── */
+    header nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      background: linear-gradient(to bottom, rgba(7,6,13,0.97), transparent);
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* Chromatic stacked wordmark — matches the landing page */
+    .nav-wordmark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.03em;
+      line-height: 0.85;
+      position: relative;
+      display: inline-block;
+      user-select: none;
+    }
+    .nav-wordmark .nw-back {
+      position: absolute; top: 0; left: -0.09em;
+      color: var(--violet);
+      mix-blend-mode: screen;
+      opacity: 0.85;
+    }
+    .nav-wordmark .nw-mid {
+      position: absolute; top: 0; left: -0.045em;
+      color: var(--rose);
+      mix-blend-mode: screen;
+    }
+    .nav-wordmark .nw-front {
+      position: relative;
+      color: var(--amber);
+      mix-blend-mode: screen;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-login {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.7;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      padding: 0.55rem 0.5rem;
+    }
+    .nav-login:hover { opacity: 1; }
+
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--amber);
+      padding: 0.55rem 1.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: #ffc04a; transform: translateY(-1px); }
+
+    /* wristband stripe */
+    .wristband {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      z-index: 200;
+      background: linear-gradient(90deg, var(--violet), var(--rose), var(--amber), var(--rose), var(--violet));
+      background-size: 200% 100%;
+      animation: slide 4s linear infinite;
+    }
+    @keyframes slide {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 1.5rem 5rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 900px; height: 700px;
+      background: radial-gradient(circle, rgba(123,79,255,0.28) 0%, rgba(255,107,157,0.1) 45%, transparent 72%);
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 400px;
+      background: radial-gradient(circle, rgba(245,166,35,0.2) 0%, transparent 70%);
+      bottom: -80px; right: -80px;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: 0.93;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+      max-width: 860px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-title .grad {
+      background: linear-gradient(110deg, var(--amber) 0%, var(--rose) 55%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 400; }
+
+    .hero-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.6s forwards;
+    }
+    .hero-meta span { color: var(--amber); }
+
+    .scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.2s forwards;
+      margin-top: 1.5rem;
+    }
+    .scroll-cue span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+      animation: pulse-line 2s ease-in-out infinite;
+    }
+    @keyframes pulse-line { 0%,100%{opacity:0.3}50%{opacity:1} }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ─── CONTEXT BLOCK ─── */
+    .context-block {
+      background: var(--deep);
+      border-top: 1px solid var(--border-v);
+      border-bottom: 1px solid var(--border-v);
+      padding: 4rem 1.5rem;
+    }
+    .context-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .context-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+    .context-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+    .context-body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 660px;
+    }
+    .context-body strong { color: var(--white); font-weight: 400; }
+    .context-body + .context-body { margin-top: 1.2rem; }
+    .context-body a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .context-body a:hover { border-bottom-color: var(--amber); }
+
+    /* callout */
+    .callout {
+      border-left: 3px solid var(--rose);
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      background: rgba(255,107,157,0.05);
+      border-radius: 0 4px 4px 0;
+    }
+    .callout p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ─── STEPS ─── */
+    .steps-section {
+      padding: 6rem 1.5rem;
+    }
+    .steps-inner { max-width: 780px; margin: 0 auto; }
+
+    .steps-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--violet);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .steps-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.9rem;
+    }
+    .steps-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 3.5rem;
+    }
+
+    .step {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 3rem 0 0;
+      margin-top: 3rem;
+    }
+    .step:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+    .step h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+      line-height: 1.02;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 1.1rem;
+    }
+    .step h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin: 2rem 0 0.9rem;
+      font-weight: 500;
+    }
+    .step p {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+    .step p strong { color: var(--white); font-weight: 400; }
+    .step a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .step a:hover { border-bottom-color: var(--amber); }
+
+    .step ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+    .step ul li {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .step ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--violet);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+    }
+    .step ul li strong { color: var(--white); font-weight: 400; }
+
+    /* search-operator chips */
+    .op-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin: 0 0 1.5rem;
+    }
+    code, .op {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.01em;
+      color: var(--amber);
+      background: rgba(245,166,35,0.07);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.15rem 0.4rem;
+      word-break: break-word;
+    }
+    .op {
+      display: block;
+      padding: 0.8rem 1rem;
+      line-height: 1.6;
+      color: var(--white);
+    }
+    .op b { color: var(--amber); font-weight: 400; }
+
+    .note {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--muted);
+      opacity: 0.75;
+      border-left: 2px solid var(--border-v);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    /* ─── TABLE ─── */
+    .table-section { padding: 6rem 1.5rem; }
+    .table-inner { max-width: 960px; margin: 0 auto; }
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      margin-top: 2.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+    thead tr {
+      background: rgba(245,166,35,0.06);
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      padding: 1.1rem 1.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-align: left;
+      color: var(--muted);
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.02); }
+    td {
+      padding: 1rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    td:first-child {
+      color: var(--white);
+      font-weight: 400;
+      font-size: 0.82rem;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    .high { color: #4ade80; }
+    .mid { color: var(--amber); }
+    .low { color: rgba(255,255,255,0.45); }
+
+    /* ─── APPS / CARDS ─── */
+    .apps-section {
+      background: var(--deep);
+      border-top: 1px solid var(--border-v);
+      border-bottom: 1px solid var(--border-v);
+      padding: 6rem 1.5rem;
+    }
+    .apps-inner { max-width: 960px; margin: 0 auto; }
+    .apps-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--violet);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .apps-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.8rem;
+    }
+    .apps-sub {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+    .apps-sub a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+    .card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .card-desc strong { color: var(--white); font-weight: 400; }
+    .card-desc a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    /* ─── PITCH ─── */
+    .pitch-section {
+      padding: 7rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .pitch-section::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 600px;
+      background: radial-gradient(circle, rgba(123,79,255,0.2) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .pitch-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .pitch-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+    .pitch-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+    }
+    .pitch-heading .grad {
+      background: linear-gradient(110deg, var(--amber) 0%, var(--rose) 55%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      display: block;
+    }
+    .pitch-body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 1.2rem;
+    }
+    .pitch-body strong { color: var(--white); font-weight: 400; }
+    .pitch-body a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--border); }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 3rem 0;
+    }
+    .pillar {
+      padding: 1.8rem 1.5rem;
+      background: rgba(255,255,255,0.02);
+    }
+    .pillar-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .pillar-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .pillar-desc {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ─── SIGN UP ─── */
+    .waitlist-section {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 7rem 1.5rem;
+      text-align: center;
+    }
+    .wl-inner { max-width: 560px; margin: 0 auto; }
+    .wl-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--violet);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .wl-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .wl-heading span {
+      background: linear-gradient(110deg, var(--amber), var(--rose));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .wl-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .wl-fine {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+    .wl-fine a { color: var(--amber); text-decoration: none; }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .cta-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--amber);
+      padding: 0.95rem 1.9rem;
+      border-radius: 2px;
+      text-decoration: none;
+      box-shadow: var(--glow-amber);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-primary:hover { background: #ffc04a; transform: translateY(-2px); }
+    .cta-secondary {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.75;
+      padding: 0.95rem 0.5rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: opacity 0.2s;
+    }
+    .cta-secondary:hover { opacity: 1; }
+
+    .cta-platform {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-platform img { height: 46px; width: auto; display: block; }
+    .cta-platform span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      opacity: 0.5;
+      max-width: 340px;
+      line-height: 1.5;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 720px;
+    }
+    .faq-q {
+      font-size: 1.15rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer a.logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      text-decoration: none;
+    }
+    footer p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    footer .footer-links {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem;
+      background: none;
+      padding: 0;
+      z-index: auto;
+    }
+    footer .footer-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.65;
+      text-decoration: none;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    footer .footer-links a:hover { color: var(--white); opacity: 1; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── REDUCED MOTION ─── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .wristband { animation: none; }
+      .scroll-line { animation: none; }
+      .cta-primary:hover, .nav-cta:hover, .card:hover { transform: none; }
+      .hero-eyebrow, .hero-title, .hero-sub, .hero-meta, .scroll-cue {
+        animation: none;
+        opacity: 1;
+      }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      header nav { padding: 1.2rem 1.2rem; }
+      .hero { padding: 8rem 1rem 4rem; }
+      .steps-section, .table-section, .apps-section, .pitch-section { padding: 4rem 1.2rem; }
+      footer { padding: 2rem 1.2rem; flex-direction: column; align-items: flex-start; }
+      footer .footer-links { gap: 0.9rem 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wristband" aria-hidden="true"></div>
+
+<header>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo" aria-label="Afterglow — home">
+    <span class="nav-wordmark">
+      <span class="nw-back">AFTERGLOW</span>
+      <span class="nw-mid">AFTERGLOW</span>
+      <span class="nw-front">AFTERGLOW</span>
+    </span>
+  </a>
+  <div class="nav-actions">
+    <a class="nav-login" href="https://go.weareafterglow.app/login">Log In</a>
+    <a class="nav-cta" href="https://go.weareafterglow.app/welcome">Sign Up</a>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<!-- ─── HERO ─── -->
+<section class="hero" aria-labelledby="hero-heading">
+
+  <p class="hero-eyebrow">The reconstruction guide</p>
+
+  <h1 class="hero-title" id="hero-heading">
+    How to find every
+    <span class="grad">concert you've been to</span>
+  </h1>
+
+  <p class="hero-sub">
+    You remember the night. You've forgotten the year, the support act, and whether that
+    venue was even called that back then. <strong>Most of it is still recoverable</strong> —
+    scattered across six places you already have access to. Here's the order to work through them.
+  </p>
+
+  <p class="hero-meta">
+    Updated <span data-current-month>August 2026</span> &nbsp;·&nbsp; 9 min read &nbsp;·&nbsp; By the Afterglow team
+  </p>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Start here</span>
+    <div class="scroll-line"></div>
+  </div>
+
+</section>
+
+<!-- ─── WHY IT'S HARD ─── -->
+<div class="context-block">
+  <div class="context-inner">
+    <span class="context-label reveal">Before you start</span>
+    <h2 class="context-heading reveal">Why your gig memory has holes in it</h2>
+
+    <p class="context-body reveal">
+      Concert memory decays in a specific, predictable way. <strong>The night survives; the metadata
+      doesn't.</strong> You'll remember standing three rows back and the exact moment the lights went
+      down, and have no idea whether it was 2013 or 2015. Venues get renamed and rebranded. Support
+      acts disappear from memory within about a year. Tickets bought by whoever in your group was
+      quickest never landed in your inbox at all.
+    </p>
+
+    <p class="context-body reveal">
+      The good news is that you have been leaving a paper trail this entire time without meaning to.
+      Every ticket purchase generated a confirmation email. Every gig generated a cluster of terrible
+      dark photographs. Most generated a bar tab. Reconstruction isn't a memory exercise — it's a
+      search exercise, and it's largely mechanical.
+    </p>
+
+    <div class="callout reveal">
+      <p>Work in the order below. The first two steps are where the overwhelming majority of your history
+      lives, and they're the ones that give you exact dates. Everything after that is for filling gaps.</p>
+    </div>
+
+    <p class="context-body reveal">
+      Set aside an evening, open a blank spreadsheet with four columns — date, artist, venue, city —
+      and don't stop to tidy as you go. Dump everything in first, deduplicate at the end.
+    </p>
+  </div>
+</div>
+
+<!-- ─── THE METHOD ─── -->
+<section class="steps-section" aria-labelledby="method-heading">
+  <div class="steps-inner">
+    <span class="steps-label reveal">The method</span>
+    <h2 class="steps-heading reveal" id="method-heading">Seven places your concert history is hiding</h2>
+    <p class="steps-sub reveal">
+      Ordered by yield per minute spent. Steps one and two will get most people to something like
+      eighty per cent of their history.
+    </p>
+
+    <!-- STEP 1 -->
+    <div class="step reveal" id="vendors">
+      <span class="step-num">Step 01</span>
+      <h2>Ticket vendor order histories</h2>
+      <p>
+        Start here, always. A vendor order history hands you the date, the venue and the headliner in
+        one row, already correct — no cross-referencing needed. Log into every ticketing account you've
+        ever made, including the ones you'd forgotten about.
+      </p>
+      <ul>
+        <li><strong>Ticketmaster</strong> — My Account, then My Tickets or Order History. Note that
+          Ticketmaster runs separate regional accounts: if you've lived in more than one country, or
+          moved between the UK and US sites, you may have two account histories under the same email.</li>
+        <li><strong>AXS</strong> — My Account, then My Events. Past events are usually kept in a
+          separate tab from upcoming ones, so check both.</li>
+        <li><strong>DICE</strong> — in the app, the Tickets tab has a past events section, and DICE is
+          unusually good about keeping the full history rather than expiring it. If you've been going
+          to small and mid-size shows in the UK for the last decade, this is a goldmine.</li>
+        <li><strong>Eventbrite</strong> — the Tickets page lists every order back to account creation.
+          Strong for club nights, all-dayers, warehouse events and anything promoter-run.</li>
+        <li><strong>See Tickets</strong> — My Account has an order history, and there's also a Find My
+          Order lookup if you bought as a guest and never made an account. That lookup needs your email
+          and order reference, which is a good reason to do the email step next.</li>
+      </ul>
+      <p>
+        Worth checking too, depending on what you're into and where you live: <strong>Resident Advisor</strong>
+        for electronic and club events, <strong>Skiddle</strong> and <strong>Gigantic</strong> in the UK,
+        <strong>Ticketweb</strong> for small venues, and your local venue's own box office system —
+        independent venues often run their own ticketing and hold years of history you won't find anywhere else.
+      </p>
+      <div class="note">
+        Expect a ceiling here. Several vendors only display the last few years online even though the
+        purchase is still in their records. That's not a dead end — it's what makes step two necessary.
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step reveal" id="email">
+      <span class="step-num">Step 02</span>
+      <h2>Your email archive</h2>
+      <p>
+        Email reaches back further than any order history, because you kept it and they didn't. If you've
+        held the same address since your twenties, this step alone can recover a decade nobody else can
+        give you. The trick is searching by <strong>sender and date range rather than by keyword</strong>,
+        and working through it two years at a time so the results stay readable.
+      </p>
+
+      <h3>Gmail</h3>
+      <div class="op-list">
+        <span class="op">from:(ticketmaster <b>OR</b> axs <b>OR</b> dice <b>OR</b> eventbrite <b>OR</b> seetickets <b>OR</b> skiddle <b>OR</b> ticketweb) in:anywhere</span>
+        <span class="op">subject:(tickets <b>OR</b> "order confirmation" <b>OR</b> "your order") after:2014/01/01 before:2016/01/01</span>
+        <span class="op">"e-ticket" <b>OR</b> "eticket" <b>OR</b> "print at home" has:attachment</span>
+        <span class="op">(doors <b>OR</b> "support act" <b>OR</b> "stage times") in:anywhere</span>
+      </div>
+      <p>
+        <code>in:anywhere</code> is the important one — it includes archived mail, spam and trash, which
+        is where a lot of ten-year-old confirmations have quietly ended up. Change the date bounds and
+        run the second search again for each two-year block.
+      </p>
+
+      <h3>Outlook and Outlook.com</h3>
+      <div class="op-list">
+        <span class="op">from:ticketmaster received:2014-01-01..2015-12-31</span>
+        <span class="op">subject:tickets hasattachment:yes</span>
+      </div>
+      <p>
+        If you use Apple Mail or a desktop client, the same logic applies through its own search fields —
+        sender plus a date window, repeated in blocks. And if you've changed email addresses over the
+        years, dig out the old account. That's usually where the earliest and most interesting half of
+        your history is sitting.
+      </p>
+      <div class="note">
+        Delivery emails count too. A vinyl order placed the morning after a show, a hotel booking in a
+        city you don't live in, a train ticket to Manchester on a Saturday — these date gigs indirectly
+        when the ticket confirmation itself has vanished.
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step reveal" id="listening">
+      <span class="step-num">Step 03</span>
+      <h2>Listening data, for the ones you can only half remember</h2>
+      <p>
+        This step doesn't find shows — it <strong>dates</strong> them. Almost everybody listens to an
+        artist obsessively in the week before seeing them, and again the morning after. That double
+        spike is a fingerprint, and it turns "sometime around 2017" into a specific week.
+      </p>
+      <ul>
+        <li><strong>Last.fm</strong> — if you've scrobbled for any length of time, open an artist in
+          your library and look at the scrobble chart over time. The spikes are the gigs. Last.fm also
+          ran an events and attendance feature years ago, so if you were an early user there may be old
+          marked-attending data still attached to your profile.</li>
+        <li><strong>Spotify</strong> — go to Privacy Settings in your account and request your extended
+          streaming history. It takes a few days to arrive and covers your entire account life, timestamped
+          to the minute. Overkill for casual use, genuinely powerful for reconstruction.</li>
+        <li><strong>Apple Music and YouTube Music</strong> — both let you request your data through the
+          equivalent privacy settings, though the exports are less granular than Spotify's.</li>
+      </ul>
+      <p>
+        Once you have a candidate week, jump to step seven to convert it into an exact date.
+      </p>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step reveal" id="photos">
+      <span class="step-num">Step 04</span>
+      <h2>Your photo library, filtered by place</h2>
+      <p>
+        This is the best source for everything you never bought a ticket for — free shows, festival
+        side stages, support slots you turned up early for, guest list nights, that band you watched in
+        the back room of a pub. <strong>The photos are dated and, usually, geotagged.</strong>
+      </p>
+      <ul>
+        <li><strong>Google Photos</strong> — use the Places view to browse by location, or search a
+          venue name directly; Google is surprisingly good at recognising well-known venues. Then narrow
+          by year.</li>
+        <li><strong>Apple Photos</strong> — the Places album shows a map of everywhere you've taken a
+          photo. Zoom into the streets your city's venues are on and work through the pins.</li>
+        <li><strong>Look for the signature</strong> — a cluster of dark, blurry, badly framed shots
+          taken between 9pm and 11pm, plus one shaky video with distorted audio. That's a gig, every time.</li>
+      </ul>
+      <div class="note">
+        Photos give you the date reliably and the artist unreliably. Note what you can, mark it uncertain,
+        and confirm the lineup in step seven.
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step reveal" id="bank">
+      <span class="step-num">Step 05</span>
+      <h2>Bank and card statements</h2>
+      <p>
+        Statements catch the purchases that never generated an email: box office walk-ups, cash-free door
+        entry, tickets a friend bought that you paid back. Most banks keep five to seven years of
+        searchable history, and most banking apps let you export it as a spreadsheet.
+      </p>
+      <ul>
+        <li>Search transactions for the vendor names — Ticketmaster, DICE, AXS, Eventbrite, See Tickets.</li>
+        <li>Search for venue names directly. Venue bars, cloakrooms and merch stands nearly always trade
+          under the venue's own name.</li>
+        <li>Scan for late-night taxi and transport charges near venue postcodes. A cab home at 11:40pm
+          from a street you have no other reason to be on is usually a gig.</li>
+      </ul>
+      <p>
+        Bank transfers to friends are worth a look as well — a payment labelled with an artist's name
+        and nothing else is exactly the kind of evidence that unlocks a show you'd completely lost.
+      </p>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step reveal" id="facebook">
+      <span class="step-num">Step 06</span>
+      <h2>Old Facebook event RSVPs</h2>
+      <p>
+        For anyone who was going out between roughly 2009 and 2018, Facebook events are the definitive
+        record of the small-venue and club era — the promoter-run nights that never touched a major
+        ticketing platform.
+      </p>
+      <ul>
+        <li>On your profile, open the Events section and look for past events. The interface for this
+          has moved repeatedly over the years, so if you can't find it, use the second option.</li>
+        <li>Request a copy of your information from Facebook's settings and choose the Events category.
+          The export includes your RSVPs with dates, which is far more complete than what the interface shows.</li>
+      </ul>
+      <div class="note">
+        Set expectations here: this is the source most likely to disappoint. Events get deleted when
+        promoter pages are taken down, and interest data was never guaranteed to persist. Take what's
+        there and move on.
+      </div>
+    </div>
+
+    <!-- STEP 7 -->
+    <div class="step reveal" id="crossref">
+      <span class="step-num">Step 07</span>
+      <h2>Cross-reference, then lock it down</h2>
+      <p>
+        You should now have a messy list: some rows exact, some rows saying "Warpaint, probably spring
+        2017, that place near the station". This step converts the second kind into the first.
+      </p>
+      <ul>
+        <li><strong>setlist.fm</strong> — the deepest crowd-sourced archive of what was played where and
+          when. Search the artist, find the tour, find the date they played your city. A tour usually
+          only passes through a given city once, so the year plus the city is often all it takes. It'll
+          also tell you the support act you'd forgotten and, frequently, jog loose a memory of the night
+          itself. If you use it a lot, our
+          <a href="/setlistfm-alternative.html">guide to setlist.fm and what sits alongside it</a>
+          is worth a look.</li>
+        <li><strong>The venue's own past events archive</strong> — most venue websites keep a listings
+          archive going back years, and it's the fastest way to confirm a date when you're sure of the
+          place but not the night.</li>
+        <li><strong>Artist tour pages and Wikipedia</strong> — full tour date lists for anyone big enough
+          to have them, which settles the year instantly.</li>
+      </ul>
+
+      <h3>What to record for each show</h3>
+      <p>
+        Keep it to four fields, and resist the urge to add more until the list is finished:
+        <strong>date, artist, venue, city.</strong> That's the minimum that makes a list portable between
+        a spreadsheet, an app, or whatever you use in fifteen years. If you want to add colour later,
+        the two things people most regret not writing down are the support acts and who they went with.
+      </p>
+      <p>
+        Where you're genuinely unsure, write the date as the month rather than inventing a day. A honest
+        "May 2016" is more useful in a decade than a confident wrong Tuesday.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── SOURCE TABLE ─── -->
+<section class="table-section" aria-labelledby="sources-heading">
+  <div class="table-inner">
+    <span class="steps-label reveal">At a glance</span>
+    <h2 class="steps-heading reveal" id="sources-heading">Which source gives you what</h2>
+    <p class="steps-sub reveal">If you've only got an hour, do the first two rows and stop.</p>
+
+    <div class="table-wrap reveal" role="region" aria-label="Comparison of sources for reconstructing concert history" tabindex="0">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>What you get</th>
+            <th>How far back</th>
+            <th>Effort</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ticket accounts</td>
+            <td>Exact date, venue, headliner</td>
+            <td>Often only recent years</td>
+            <td><span class="high">Low</span></td>
+          </tr>
+          <tr>
+            <td>Email archive</td>
+            <td>Exact date, venue, headliner</td>
+            <td>As far back as the mailbox</td>
+            <td><span class="high">Low</span></td>
+          </tr>
+          <tr>
+            <td>Photo library</td>
+            <td>Date and location; artist unconfirmed</td>
+            <td>Whole library</td>
+            <td><span class="mid">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Bank statements</td>
+            <td>Date and venue; artist unconfirmed</td>
+            <td>Typically 5–7 years</td>
+            <td><span class="mid">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Last.fm / Spotify</td>
+            <td>Narrows a date window; no venue</td>
+            <td>Whole account history</td>
+            <td><span class="mid">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Facebook events</td>
+            <td>Date, venue, promoter nights</td>
+            <td>Patchy; deletions common</td>
+            <td><span class="low">High, low yield</span></td>
+          </tr>
+          <tr>
+            <td>setlist.fm</td>
+            <td>Confirms date, tour and support</td>
+            <td>Extensive</td>
+            <td><span class="high">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT YOU WON'T RECOVER ─── -->
+<section class="apps-section" aria-labelledby="gaps-heading">
+  <div class="apps-inner">
+    <span class="apps-label reveal">Honest limits</span>
+    <h2 class="apps-heading reveal" id="gaps-heading">What you won't get back</h2>
+    <p class="apps-sub reveal">
+      No method recovers everything, and a guide that claims otherwise is selling you something. Here's
+      where the trail genuinely goes cold — and why it matters less than you'd think.
+    </p>
+
+    <div class="card reveal">
+      <div class="card-name">The gaps</div>
+      <p class="card-desc">
+        <strong>Anything paid for in cash before you owned a smartphone</strong> leaves no digital trace at
+        all. <strong>Festivals</strong> collapse into a single ticket, so the forty sets you actually watched
+        are gone unless you photographed them. <strong>Support acts</strong> are the first thing to vanish and
+        the hardest to recover, though setlist.fm rescues more of them than you'd expect.
+        <strong>Tickets someone else bought</strong> never appear in your accounts. And a lot of the best nights
+        — free shows, guest list, a mate's band in a pub back room — were never transactions in the first place.
+      </p>
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.06);margin:1.5rem 0;" />
+      <p class="card-desc">
+        The realistic target is a strong, mostly complete list rather than a perfect one — and the honest
+        reason to build it now is that <strong>the trail keeps getting colder</strong>. Platforms shut down,
+        accounts get deleted, phone backups fail. Every year you leave it, a bit more goes. Once you've got
+        the list out of your head and into a file, it stops decaying — and from that point on you're only
+        ever adding to it. If you'd rather see how the different apps handle this before committing to one,
+        we've written an honest
+        <a href="/best-concert-tracking-apps.html">roundup of concert tracking apps</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AFTERGLOW ─── -->
+<section class="pitch-section" aria-labelledby="pitch-heading">
+  <div class="pitch-inner">
+    <span class="pitch-label reveal">Somewhere for it to live</span>
+    <h2 class="pitch-heading reveal" id="pitch-heading">
+      A list in a spreadsheet
+      <span class="grad">is still a list in a spreadsheet.</span>
+    </h2>
+
+    <p class="pitch-body reveal">
+      You can absolutely stop at the spreadsheet, and there's a real argument for it — a file on your own
+      machine can't be acquired, shut down or quietly changed. Keep a copy either way.
+    </p>
+
+    <p class="pitch-body reveal">
+      What a spreadsheet won't do is grow on its own, sit in your pocket at the venue, or show you that
+      three people you know are at the same gig on Friday. That's what we built
+      <strong>Afterglow</strong> for: a permanent concert passport, free, on the web and on Android.
+    </p>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <span class="pillar-icon" aria-hidden="true">📍</span>
+        <div class="pillar-name">Verified stamps</div>
+        <p class="pillar-desc">Check in at the venue and the show gets a GPS-verified stamp — proof you were actually there, visibly distinct from shows you added yourself.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon" aria-hidden="true">🎟️</span>
+        <div class="pillar-name">Permanent</div>
+        <p class="pillar-desc">Everything you add stays. The point of doing this work once is not having to do it again.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon" aria-hidden="true">👥</span>
+        <div class="pillar-name">Friends</div>
+        <p class="pillar-desc">See what people you know are going to, and who else was in the room at shows you've already logged.</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon" aria-hidden="true">🔒</span>
+        <div class="pillar-name">Your call</div>
+        <p class="pillar-desc">Your passport has a public page you can share, or you can opt out of it entirely — and hide individual shows you'd rather keep to yourself.</p>
+      </div>
+    </div>
+
+    <p class="pitch-body reveal">
+      <strong>The honest bit about adding your history:</strong> there is no bulk import. You add past
+      shows one at a time, by searching for the artist and date and adding them to your passport. For a
+      list of sixty gigs that's an evening's work with the football on — not a click. We'd rather tell you
+      that up front than have you sign up expecting a file upload. Ticket vendors don't give third-party
+      apps access to your order history, so any app promising a complete automatic import is overstating
+      what it can do.
+    </p>
+
+    <p class="pitch-body reveal">
+      The other honest bit: shows you add retrospectively <strong>aren't marked as verified</strong>, because
+      we weren't there to verify them. They sit in your passport as self-reported history, and everything
+      you check into from today onwards carries the verified stamp. That distinction is the whole point —
+      it only means anything if we're strict about it. If you're weighing this up against other options,
+      the <a href="/best-concert-tracking-apps.html">app roundup</a> compares all of them, including where
+      Afterglow loses — and if you want the deepest database rather than a verified one,
+      <a href="/concert-archives-alternative.html">Concert Archives</a> is the serious rival.
+    </p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="apps-section" aria-labelledby="faq-heading">
+  <div class="apps-inner">
+    <span class="apps-label reveal">Common questions</span>
+    <h2 class="apps-heading reveal" id="faq-heading">Reconstructing your gig history — FAQ</h2>
+
+    <div class="faq-list">
+
+      <div class="card reveal">
+        <p class="faq-q">How far back can I realistically go?</p>
+        <p class="card-desc">
+          If you've kept the same email address, roughly as far back as you've been buying tickets online —
+          for most people, the mid-2000s. Order histories on the ticketing sites often only show recent
+          years, but <strong>the confirmation emails usually survive much longer</strong>. Anything bought
+          at a box office with cash before you had a smartphone is memory and photographs only.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <p class="faq-q">What if I only remember the year?</p>
+        <p class="card-desc">
+          Narrow the window with listening data or photos, then look up the artist's tour on setlist.fm or
+          their own tour archive. A tour usually only passes through a given city once, so
+          <strong>the year plus the city is often enough to pin the exact date</strong>.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <p class="faq-q">Can Spotify or Apple Music tell me which concerts I've been to?</p>
+        <p class="card-desc">
+          No — neither one records attendance. What they can do is date things. Spotify's extended streaming
+          history, requested through your privacy settings, shows exactly what you played and when, so a
+          listening spike around a date you can't place is strong evidence you had tickets.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <p class="faq-q">Is there an app that imports my concert history automatically?</p>
+        <p class="card-desc">
+          Not reliably, and be sceptical of anything claiming otherwise. Ticket vendors don't give third-party
+          apps access to your order history, so a "complete automatic import" is either inbox scraping or
+          marketing. <strong>Reconstruction is a manual job.</strong> What an app can usefully do is give the
+          finished list somewhere permanent to live and keep growing.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <p class="faq-q">Where should I keep the list once I've built it?</p>
+        <p class="card-desc">
+          Build it in a spreadsheet first — it's portable and nobody can take it away from you. Then, if you
+          want it searchable, shareable and still growing in ten years, put it in an app.
+          <a href="https://go.weareafterglow.app/welcome">Afterglow</a> is free and built around exactly that,
+          and the <a href="/best-concert-tracking-apps.html">roundup</a> covers the alternatives if it's not
+          the right fit for you.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── SIGN UP ─── -->
+<section class="waitlist-section" id="signup" aria-labelledby="wl-heading">
+  <div class="wl-inner">
+    <span class="wl-label">Free · no paid tier</span>
+    <h2 class="wl-heading" id="wl-heading">
+      Give the list<br/><span>somewhere to live</span>
+    </h2>
+    <p class="wl-sub">
+      Add the shows you've just found, then check in at the next one for a verified stamp.
+      Free, on the web and on Android.
+    </p>
+
+    <div class="cta-row">
+      <a class="cta-primary" href="https://go.weareafterglow.app/welcome">Create your free account →</a>
+      <a class="cta-secondary" href="https://go.weareafterglow.app/login">Log in</a>
+    </div>
+
+    <div class="cta-platform">
+      <a href="https://play.google.com/store/apps/details?id=app.weareafterglow.go.twa"
+         aria-label="Get Afterglow on Google Play">
+        <img src="/assets/google-play-badge.svg" alt="Get it on Google Play" loading="lazy" />
+      </a>
+      <span>Google Play and the Google Play logo are trademarks of Google LLC.</span>
+    </div>
+
+    <p class="wl-fine">Works in any browser · <a href="/">weareafterglow.app</a></p>
+  </div>
+</section>
+
+<footer>
+  <a href="/" class="logo" aria-label="Afterglow home">
+    <span class="nav-wordmark">
+      <span class="nw-back">AFTERGLOW</span>
+      <span class="nw-mid">AFTERGLOW</span>
+      <span class="nw-front">AFTERGLOW</span>
+    </span>
+  </a>
+  <p>© <span data-current-year>2026</span> Afterglow &nbsp;·&nbsp; Made for the ones who showed up.</p>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="/">Home</a>
+    <a href="/concert-history.html">Find Your Concert History</a>
+    <a href="/setlistfm-alternative.html">Setlist.fm Alternative</a>
+    <a href="/best-concert-tracking-apps.html">Best Concert Apps</a>
+    <a href="/letterboxd-for-concerts.html">Letterboxd for Concerts</a>
+    <a href="/bandsintown-alternative.html">Bandsintown Alternative</a>
+    <a href="/concert-archives-alternative.html">Concert Archives Alternative</a>
+    <a href="/songkick-alternative.html">Songkick Alternative</a>
+    <a href="https://go.weareafterglow.app/welcome">Sign Up</a>
+    <a href="https://go.weareafterglow.app/login">Log In</a>
+  </nav>
+</footer>
+
+<script>
+  // ── Rolling year + updated month ───────────────────────────────
+  // The HTML ships with real values baked in, so crawlers that don't
+  // run JavaScript still see a sensible year. This only overwrites
+  // them when the calendar has actually moved on.
+  (function () {
+    var now = new Date();
+    var year = String(now.getFullYear());
+    var month = now.toLocaleString('en-GB', { month: 'long' });
+
+    document.querySelectorAll('[data-current-year]').forEach(function (el) {
+      if (el.textContent.trim() !== year) el.textContent = year;
+    });
+
+    document.querySelectorAll('[data-current-month]').forEach(function (el) {
+      var next = month + ' ' + year;
+      if (el.textContent.trim() !== next) el.textContent = next;
+    });
+
+    // Keep the <title> in step with the visible headline
+    if (document.title.indexOf(year) === -1) {
+      document.title = document.title.replace(/\b20\d{2}\b/, year);
+    }
+  })();
+
+  // ── Scroll reveal (skipped entirely when reduced motion is preferred) ──
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.reveal');
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    items.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
